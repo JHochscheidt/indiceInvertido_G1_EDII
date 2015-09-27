@@ -23,9 +23,12 @@ typedef struct _lista{
 NODO *criaNodoNull();
 LISTA *criaListaVazia();
 
-NODO *insert();
-NODO *delete();
+NODO *busca(char *palavra, NODO *root);
+NODO *insert(char *palavra, NODO *root);
+NODO *delete(char *palavra, NODO *root);
+NODO *criaArvoreVazia();
 void verificaArvore(NODO *root);
+
 
 
 
