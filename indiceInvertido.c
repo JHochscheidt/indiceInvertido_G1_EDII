@@ -18,4 +18,38 @@ LISTA *criaListaVazia(){
 	return lista;
 }
 
+NODO *insert(char *palavra, NODO *root){
+	if(!root){
+		root = (NODO*) malloc(sizeof(NODO));
+		root-> pai = NIL;
+		if(strcpy(root->info, palavra));
+		root->cor = BLACK;
+	}
+
+
+
+
+}
+
+NODO *busca(char *palavra, NODO *root){
+	if(!root) return NULL;
+	
+	NODO *atual = root;
+	int aux; // para pegar o retorna da funcao STRCMP
+	aux = strcmp(palavra, atual->info);
+	if(aux < 0) // palavra menor que atual
+		return busca(palavra, atual->esq); 
+	else if(aux > 0) // palavra maior que atual
+		return busca(palavra, atual->dir);
+	else return atual;
+	
+}
+
+
+NODO *criaArvoreVazia(){
+	return NULL;
+}
+
+
+
 
