@@ -1,69 +1,44 @@
-#include "indiceInvertido.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include "indiceInvertido.h"
 
-NODO *criaNodoNull(){
-	NODO *NIL = (NODO*) malloc(sizeof(NODO));
-	NIL->pai = NULL;
-	NIL->esq = NULL;
-	NIL->dir = NULL;
-	NIL->cor = BLACK;
-	return NIL;
-}
+TpNodo *insert(char *palavra, TpNodo *root){
+	// se arvore estiver vazia
+	if(root == NULL){
+		puts("arvore vazia\n\n");
+		nodoNULL = (TpNodo*) malloc(sizeof(TpNodo));
+		// apontamentos do sentinela "nodoNULL"
+		nodoNULL->cor = BLACK;
+		nodoNULL->esq = NULL;
+		nodoNULL->dir = NULL;
+		nodoNULL->pai = NULL;
+		puts("alocado nodoNULL\n\n");
 
-LISTA *criaListaVazia(){
-	LISTA *lista = (LISTA*) malloc(sizeof(LISTA));
-	lista->ant = NULL;
-	lista->prox = NULL;
-	return lista;
-}
-
-NODO *insert(char *palavra, NODO *root){
-	if(!root){
-		root = (NODO*) malloc(sizeof(NODO));
-		root-> pai = NIL;
-		if(strcpy(root->info, palavra));
+		// alocando raiz
+		root = (TpNodo*) malloc(sizeof(TpNodo));
+		root->info = (char*) malloc(sizeof(strlen(palavra)));
+		strcpy(root->info, palavra);
+		root->dir = nodoNULL;
+		root->esq = nodoNULL;
+		root->pai = nodoNULL;
 		root->cor = BLACK;
+		puts("inserido primeira chave, RAIZ\n\n");
+		return root;
 	}
-
-
-
-
+	return root;
 }
 
-NODO *busca(char *palavra, NODO *root){
-	if(!root) return NULL;
-	
-	NODO *atual = root;
-	int aux; // para pegar o retorna da funcao STRCMP
-	aux = strcmp(palavra, atual->info);
-	if(aux < 0) // palavra menor que atual
-		return busca(palavra, atual->esq); 
-	else if(aux > 0) // palavra maior que atual
-		return busca(palavra, atual->dir);
-	else return atual;
-	
-}
-
-void Desenha(NODO *t , int nivel){
-int x;
-	if (t !=NodoNULL){
+void Desenha(TpNodo *root , int nivel){
+	int x;
+	if (root !=nodoNULL){
 		for (x=1; x<=nivel; x++)
 			printf("=");
-		if(t->red) printf("%d Red\n", t->key);
-		else printf("%d Black\n", t->key);
-		if (t->esq != NodoNULL) Desenha(t->esq, (nivel+1));
-		if (t->dir != NodoNULL) Desenha(t->dir, (nivel+1));
+		if(root->cor) printf("%s Red\n", root->info);
+		else printf("%s Black\n", root->info);
+		if (root->esq != nodoNULL) Desenha(root->esq, (nivel+1));
+		if (root->dir != nodoNULL) Desenha(root->dir, (nivel+1));
 	}
 	else printf("Arvore Vazia\n");
 }
-
-
-
-NODO *criaArvoreVazia(){
-	return NULL;
-}
-
-
-
 
