@@ -19,8 +19,7 @@ typedef struct  _nodo{
 	TpLista *ocorrencias; // ponteiro para a lista com os arquivos em que a palavra (info) ocorre	
 }TpNodo;
 
-// sentinela nodoNULL
-static TpNodo *nodoNULL = NULL;
+
 
 
 // funcoes principais
