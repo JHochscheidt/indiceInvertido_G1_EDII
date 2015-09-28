@@ -45,6 +45,20 @@ NODO *busca(char *palavra, NODO *root){
 	
 }
 
+void Desenha(NODO *t , int nivel){
+int x;
+	if (t !=NodoNULL){
+		for (x=1; x<=nivel; x++)
+			printf("=");
+		if(t->red) printf("%d Red\n", t->key);
+		else printf("%d Black\n", t->key);
+		if (t->esq != NodoNULL) Desenha(t->esq, (nivel+1));
+		if (t->dir != NodoNULL) Desenha(t->dir, (nivel+1));
+	}
+	else printf("Arvore Vazia\n");
+}
+
+
 
 NODO *criaArvoreVazia(){
 	return NULL;
