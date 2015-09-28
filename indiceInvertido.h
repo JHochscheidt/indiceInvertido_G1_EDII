@@ -28,6 +28,7 @@ NODO *insert(char *palavra, NODO *root);
 NODO *delete(char *palavra, NODO *root);
 NODO *criaArvoreVazia();
 void verificaArvore(NODO *root);
+void Desenha(NODO *t , int nivel);
 
 
 
