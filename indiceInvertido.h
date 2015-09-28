@@ -4,32 +4,32 @@
 #define RED 1
 #define BLACK 0
 
-typedef struct _nodo{
+typedef struct _lista{
+	struct _lista *ant;
+	struct _lista *prox;
+	int pos;
+}TpLista;
+
+typedef struct  _nodo{
 	struct _nodo *pai;
 	struct _nodo *esq;
 	struct _nodo *dir;
 	int cor;
 	char *info; // palavra a ser indexada
-	struct _lista *ocorrencias; // ponteiro para a lista com os arquivos em que a palavra (info) ocorre	
-}NODO;
+	TpLista *ocorrencias; // ponteiro para a lista com os arquivos em que a palavra (info) ocorre	
+}TpNodo;
 
-typedef struct _lista{
-	struct _lista *ant;
-	struct _lista *prox;
-	int pos;
-}LISTA;
-// definindo valores do nodo NULL
+// sentinela nodoNULL
+static TpNodo *nodoNULL = NULL;
 
-NODO *criaNodoNull();
-LISTA *criaListaVazia();
 
-NODO *busca(char *palavra, NODO *root);
-NODO *insert(char *palavra, NODO *root);
-NODO *delete(char *palavra, NODO *root);
-NODO *criaArvoreVazia();
-void verificaArvore(NODO *root);
-void Desenha(NODO *t , int nivel);
+// funcoes principais
+TpNodo *insert(char *palavra, TpNodo *root);
 
+
+
+// funcoes auxiliares
+void Desenha(TpNodo *root , int nivel);
 
 
 
